@@ -1,1 +1,6 @@
-codigodsp
+inicio
+   leia nota1 "digite a primeira nota:"
+   leia nota2 "digite a segunda nota:"
+   soma (nota1 + nota2) /2
+   escreva media
+fim
