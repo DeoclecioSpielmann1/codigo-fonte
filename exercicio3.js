@@ -1,3 +1,8 @@
+//Exercício 2: Sequência Numérica
+
+//Desenvolva um algoritmo que imprima todos os números pares entre 1 e 20
+// usando uma estrutura de repetição.
+
 início
   para numero ← 1 até 20 faça
     se (numero % 2 = 0) então
@@ -6,7 +11,7 @@ início
   fim-para
 fim
 
-JAVASCRIPT
+//JAVASCRIPT
 
 for (let numero = 1; numero <= 20; numero++) {
   if (numero % 2 === 0) {
