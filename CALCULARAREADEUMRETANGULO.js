@@ -3,4 +3,4 @@
 let largura = 10;
 let altura = 5;
 let area = largura * altura;
-console.log(area);
+console.log("A área é: " + area);
