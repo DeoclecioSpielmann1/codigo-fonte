@@ -1,8 +1,8 @@
 //Calculadora de IMC
 //Desenvolva um script que calcula o Índice de Massa Corporal.
 //Com base no IMC, mostre a categoria de peso.
-let peso = 70; 
-let altura = 1.75;
+let peso = 62; 
+let altura = 1.69;
 {
     const imc = peso / (altura * altura);
     if (imc < 18.5) {
