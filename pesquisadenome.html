@@ -1,0 +1,22 @@
+//Este exemplo demonstra a pesquisa de um nome em um array. 
+//A entrada é feita por um campo de texto. 
+//O processamento ocorre ao clicar em um botão. 
+//O resultado é exibido em uma div.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa de Nome</title>
+</head>
+<body>
+    <script>
+              const nomes = ["Alice", "Bruno", "Carlos", "Daniela", "Eduardo"];
+        function pesquisar() {
+            let nome = document.getElementById("nome").value;
+            document.getElementById("resultado").textContent = nomes.includes(nome) ? "Nome encontrado!" : "Nome não encontrado.";
+        }
+    </script>
+    
+</body>
+</html>

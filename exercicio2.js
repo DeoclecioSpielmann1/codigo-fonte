@@ -4,9 +4,9 @@
 //calcule a média e exiba se o aluno foi aprovado (média >= 7) ou reprovado.
 
 início 
-  A ← 8
-  B ← 6
-  média ← (A + B ) / 2
+  A = 8
+  B = 6
+  média = (A + B ) / 2
   se (média >= 7) então
     escreva "Aprovado"
   senão

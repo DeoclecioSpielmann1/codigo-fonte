@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora JavaScript</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Share Tech Mono', monospace;
+        background: #1a1a2e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: radial-gradient(circle at 20% 50%, #16213e 0%, #0f3460 50%, #1a1a2e 100%);
+    }
+
+    .calculator {
+        background: #16213e;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 0 40px rgba(0, 255, 170, 0.15), 0 0 80px rgba(0,0,0,0.6);
+        border: 1px solid rgba(0,255,170,0.1);
+        width: 300px;
+    }
+
+    .display {
+        background: #0a0a1a;
+        color: #00ffaa;
+        font-size: 2.2em;
+        padding: 14px 16px;
+        text-align: right;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        overflow-x: auto;
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        border: 1px solid rgba(0,255,170,0.2);
+        text-shadow: 0 0 10px rgba(0,255,170,0.7);
+        letter-spacing: 2px;
+        transition: color 0.2s;
+    }
+
+    .display.error {
+        color: #ff4d6d;
+        text-shadow: 0 0 10px rgba(255,77,109,0.7);
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    button {
+        height: 62px;
+        font-size: 1.1em;
+        font-family: 'Share Tech Mono', monospace;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.08s, box-shadow 0.08s, filter 0.08s;
+        letter-spacing: 1px;
+    }
+
+    button:active {
+        transform: scale(0.93);
+        filter: brightness(1.3);
+    }
+
+    .btn-number {
+        background: #1e2d4a;
+        color: #e0e0e0;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .btn-number:hover { background: #253659; }
+
+    .btn-operator {
+        background: #0f3460;
+        color: #00d4ff;
+        border: 1px solid rgba(0,212,255,0.2);
+    }
+    .btn-operator:hover { background: #164080; }
+
+    .btn-clear {
+        background: #3d0b17;
+        color: #ff4d6d;
+        border: 1px solid rgba(255,77,109,0.2);
+    }
+    .btn-clear:hover { background: #5a1022; }
+
+    .btn-equal {
+        background: #00ffaa;
+        color: #0a0a1a;
+        border: none;
+        font-size: 1.4em;
+        grid-row: span 2;
+    }
+    .btn-equal:hover { background: #00e699; box-shadow: 0 0 16px rgba(0,255,170,0.4); }
+
+    .btn-zero {
+        grid-column: span 2;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <div id="display" class="display">0</div>
+    <div class="buttons">
+        <button class="btn-clear" onclick="clearDisplay()">C</button>
+        <button class="btn-operator" onclick="appendOperator('/')">÷</button>
+        <button class="btn-operator" onclick="appendOperator('*')">×</button>
+        <button class="btn-equal" onclick="calculateResult()">=</button>
+
+        <button class="btn-number" onclick="appendNumber('7')">7</button>
+        <button class="btn-number" onclick="appendNumber('8')">8</button>
+        <button class="btn-number" onclick="appendNumber('9')">9</button>
+
+        <button class="btn-number" onclick="appendNumber('4')">4</button>
+        <button class="btn-number" onclick="appendNumber('5')">5</button>
+        <button class="btn-number" onclick="appendNumber('6')">6</button>
+        <button class="btn-operator" onclick="appendOperator('+')">+</button>
+
+        <button class="btn-number" onclick="appendNumber('1')">1</button>
+        <button class="btn-number" onclick="appendNumber('2')">2</button>
+        <button class="btn-number" onclick="appendNumber('3')">3</button>
+        <button class="btn-operator" onclick="appendOperator('-')">−</button>
+
+        <button class="btn-number btn-zero" onclick="appendNumber('0')">0</button>
+        <button class="btn-number" onclick="appendNumber('.')">.</button>
+    </div>
+</div>
+
+<script>
+    const display = document.getElementById('display');
+    let currentInput = '';
+    let justCalculated = false;
+
+    function appendNumber(num) {
+        if (justCalculated) {
+            currentInput = '';
+            justCalculated = false;
+        }
+
+        if (num === '.') {
+            const segments = currentInput.split(/[\+\-\*\/]/);
+            const lastSegment = segments[segments.length - 1];
+            if (lastSegment.includes('.')) return;
+        }
+
+        currentInput += num;
+        updateDisplay();
+    }
+
+    function appendOperator(op) {
+        if (justCalculated) {
+            justCalculated = false;
+        }
+
+        if (currentInput === '' && op !== '-') return;
+
+        if (/[\+\-\*\/]$/.test(currentInput)) {
+            currentInput = currentInput.slice(0, -1);
+        }
+
+        currentInput += op;
+        updateDisplay();
+    }
+
+    function clearDisplay() {
+        currentInput = '';
+        justCalculated = false;
+        display.classList.remove('error');
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        display.innerText = currentInput
+            .replace(/\*/g, '×')
+            .replace(/\//g, '÷')
+            || '0';
+    }
+
+    function calculateResult() {
+        if (currentInput === '') return;
+
+        try {
+             if (/[^0-9\+\-\*\/\.\s]/.test(currentInput)) {
+                throw new Error("Entrada inválida");
+            }
+
+            if (/[\+\-\*\/]$/.test(currentInput)) {
+                throw new Error("Expressão incompleta");
+            }
+
+            let result = Function('"use strict"; return (' + currentInput + ')')();
+
+            if (!isFinite(result)) throw new Error("Erro matemático");
+
+            result = parseFloat(result.toPrecision(12));
+
+            display.classList.remove('error');
+            display.innerText = result;
+            currentInput = result.toString();
+            justCalculated = true; r
+        } catch (e) {
+            display.classList.add('error');
+            display.innerText = "Erro";
+            currentInput = '';
+            justCalculated = false;
+        }
+    }
+
+    // Suporte ao teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key >= '0' && e.key <= '9') appendNumber(e.key);
+        else if (e.key === '.') appendNumber('.');
+        else if (['+', '-', '*', '/'].includes(e.key)) appendOperator(e.key);
+        else if (e.key === 'Enter' || e.key === '=') calculateResult();
+        else if (e.key === 'Backspace') {
+            currentInput = currentInput.slice(0, -1);
+            justCalculated = false;
+            updateDisplay();
+        }
+        else if (e.key === 'Escape') clearDisplay();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- Exemplos simples de manipulação do DOM com código HTML completo: -->
+<!-- 2. Lista de Tarefas -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input id="tarefaInput" type="text" placeholder="Digite uma tarefa">
+    <button onclick="adicionarTarefa()">Adicionar</button>
+    <ul id="listaTarefas"></ul>
+
+    <script>
+        function adicionarTarefa() {
+            const tarefaInput = document.getElementById("tarefaInput");
+            const tarefaTexto = tarefaInput.value.trim();
+            if (tarefaTexto !== "") {
+                const li = document.createElement("li");
+                li.textContent = tarefaTexto;
+                document.getElementById("listaTarefas").appendChild(li);
+                tarefaInput.value = "";
+            }
+        }
+    </script>
+    
+</body>
+</html>
