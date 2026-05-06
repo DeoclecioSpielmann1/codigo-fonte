@@ -1,0 +1,23 @@
+<!--Leia valor da compra. Se valor >100, mostrar ganhou desconto, senão sem desconto.-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite o valor da compra" type="number">
+<button onclick="processar()">Executar</button>
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let valor = Number(document.getElementById("entrada").value);
+    if (valor > 100) {
+        document.getElementById("saida").innerHTML = "Ganhou desconto";
+    } else {
+        document.getElementById("saida").innerHTML = "Sem desconto";
+    }
+}
+</script>
+
+</body>
+</html>

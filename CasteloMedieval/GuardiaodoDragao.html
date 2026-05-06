@@ -1,0 +1,23 @@
+<!--Leia palavra secreta. Se for fogo, ponte liberada, senão bloqueada.-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite a palavra secreta">
+<button onclick="processar()">Executar</button>
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let palavra = document.getElementById("entrada").value;
+    if (palavra == "fogo") {
+        document.getElementById("saida").innerHTML = "Ponte liberada";
+    } else {
+        document.getElementById("saida").innerHTML = "Ponte bloqueada";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!--18+ entra direto; 16-17 acompanhado entra; menos de 16 proibido-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="idade" placeholder="Idade">
+<input id="acompanhado" placeholder="Acompanhado (sim ou nao)">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let idade = Number(document.getElementById("idade").value);
+    let acompanhado = document.getElementById("acompanhado").value;
+    if (idade >= 18) {
+        document.getElementById("saida").innerHTML = "Entrada permitida";
+    } else if (idade >= 16 && acompanhado == "sim") {
+        document.getElementById("saida").innerHTML = "Entrada permitida";
+    } else {
+        document.getElementById("saida").innerHTML = "Entrada proibida";
+    }
+}
+</script>
+
+</body>
+</html>

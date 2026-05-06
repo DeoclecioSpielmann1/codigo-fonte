@@ -1,0 +1,22 @@
+<!--Mostre Subindo degrau 1 até 5 usando while.-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="processar()">Executar</button>
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let degrau = 1;
+    let texto = "";
+    while (degrau <= 5) {
+        texto = texto + "Subindo degrau " + degrau + "<br>";
+        degrau++;
+    }
+    document.getElementById("saida").innerHTML = texto;
+}
+</script>
+
+</body>
+</html>

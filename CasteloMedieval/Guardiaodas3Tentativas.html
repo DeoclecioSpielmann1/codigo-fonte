@@ -1,0 +1,30 @@
+<!--Senha dragon com no máximo 3 tentativas.-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite a senha">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+let tentativas = 0;
+function processar() {
+    let senha = document.getElementById("entrada").value;
+    tentativas++;
+    if (senha == "dragon") {
+        document.getElementById("saida").innerHTML = "Portão aberto";
+    } else {
+        if (tentativas >= 3) {
+            document.getElementById("saida").innerHTML = "Acesso bloqueado";
+        } else {
+            document.getElementById("saida").innerHTML =
+                "Senha errada. Tentativa " + tentativas;
+        }
+    }
+}
+</script>
+
+</body>
+</html>

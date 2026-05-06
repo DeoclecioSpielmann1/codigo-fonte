@@ -1,0 +1,25 @@
+<!--Pedir senha até acertar ouro.-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite a senha">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let senha = document.getElementById("entrada").value;
+    while (senha != "ouro") {
+        document.getElementById("saida").innerHTML =
+            "Senha incorreta. Digite novamente."
+        return;
+    }
+    document.getElementById("saida").innerHTML =
+        "Tesouro liberado!";
+}
+</script>
+
+</body>
+</html>

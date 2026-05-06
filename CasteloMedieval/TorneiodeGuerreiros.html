@@ -1,0 +1,25 @@
+<!--Idade >=16 e possuir espada (sim) para participar-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="idade" placeholder="Idade">
+<input id="espada" placeholder="Possui espada (sim ou nao)">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let idade = Number(document.getElementById("idade").value);
+    let espada = document.getElementById("espada").value;
+    if (idade >= 16 && espada == "sim") {
+        document.getElementById("saida").innerHTML = "Pode participar";
+    } else {
+        document.getElementById("saida").innerHTML = "Não pode participar";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!--5 clientes. Compra >100 ganha brinde. Mostrar total.-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada">
+<button onclick="processar()">Adicionar Cliente</button>
+
+<div id="saida"></div>
+
+<script>
+let cliente = 1;
+let brindes = 0;
+function processar() {
+    let valor = Number(document.getElementById("entrada").value);
+    if (valor > 100) {
+        brindes++;
+    }
+    cliente++;
+    if (cliente <= 5) {
+        document.getElementById("saida").innerHTML =
+            "Cliente registrado. Faltam " + (6 - cliente);
+    } else {
+        document.getElementById("saida").innerHTML =
+            "Total com brinde: " + brindes;
+    }
+}
+</script>
+
+</body>
+</html>

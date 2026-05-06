@@ -1,0 +1,23 @@
+<!--Crie um programa que leia a idade. Se idade >=18, mostrar Entrada permitida, senão Entrada negada.-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite sua idade" type="number">
+<button onclick="processar()">Executar</button>
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let idade = Number(document.getElementById("entrada").value);
+    if (idade >= 18) {
+        document.getElementById("saida").innerHTML = "Entrada permitida";
+    } else {
+        document.getElementById("saida").innerHTML = "Entrada negada";
+    }
+}
+</script>
+
+</body>
+</html>

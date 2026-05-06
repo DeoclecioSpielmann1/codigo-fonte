@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contador</title>
+</head>
+
+<body>
+
+    <h1>Contador de Cliques</h1>
+    <button onclick="contador++; atualizar()">Clique</button>
+    <button onclick="contador = 0; atualizar()">Reset</button>
+
+    <div id="resultado">Total de cliques: 0</div>
+
+    <script>
+        let contador = 0;
+        function atualizar() {
+            document.getElementById("resultado").innerText = "Total de cliques: " + contador;
+        }
+    </script>
+
+</body>
+
+</html>

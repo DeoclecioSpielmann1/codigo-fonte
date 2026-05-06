@@ -1,0 +1,25 @@
+<!--Senha 1234. Se vazio, pedir senha-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Digite a senha">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let senha = document.getElementById("entrada").value;
+    if (senha == "") {
+        document.getElementById("saida").innerHTML = "Digite uma senha";
+    } else if (senha == "1234") {
+        document.getElementById("saida").innerHTML = "Cofre aberto";
+    } else {
+        document.getElementById("saida").innerHTML = "Senha incorreta";
+    }
+}
+</script>
+
+</body>
+</html>

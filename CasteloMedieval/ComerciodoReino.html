@@ -1,0 +1,30 @@
+<!--Acima de 200 desconto 20%; acima de 100 desconto 10%; senão sem desconto.Leia valor da compra. Se valor >100, mostrar ganhou desconto, senão sem desconto.-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<input id="entrada" placeholder="Valor da compra">
+<button onclick="processar()">Executar</button>
+
+<div id="saida"></div>
+
+<script>
+function processar() {
+    let valor = Number(document.getElementById("entrada").value);
+    let desconto = 0;
+    let total = 0;
+    if (valor > 200) {
+        desconto = valor * 0.20;
+    } else if (valor > 100) {
+        desconto = valor * 0.10;
+    } else {
+        desconto = 0;
+    }
+    total = valor - desconto;
+    document.getElementById("saida").innerHTML =
+        "Desconto: " + desconto + "<br>Total: " + total;
+}
+</script>
+
+</body>
+</html>
